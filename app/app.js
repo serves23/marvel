@@ -9,16 +9,16 @@
 angular.module('app', [])
   .controller('wmataDataController', ['$scope','$http', function($scope,$http) {
 
-   
+    $scope.stationLoaded = false;
 
-   // $scope.api_key = "ecc4d531588bc6a23764b0af2d012ff0";
+    $scope.api_key = "dedee1cf09004501a5865c069536f925";
 
-    $http.get("http://gateway.marvel.com:80/v1/public/characters?apikey=ecc4d531588bc6a23764b0af2d012ff0")
+    $http.get("https://api.wmata.com/StationPrediction.svc/json/GetPrediction/All?contentType={contentType}&api_key=" + $scope.api_key)
       .success(function (data) {
-          $scope.data = data.name;
+          $scope.stationData = data.Trains;
       });
 
-    //$scope.Line = '-Line';
+    $scope.Line = '-Line';
 }]);
 
 /*
