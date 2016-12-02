@@ -9,13 +9,13 @@
 angular.module('app', [])
   .controller('wmataDataController', ['$scope','$http', function($scope,$http) {
 
-    $scope.stationLoaded = false;
+   
 
-    $scope.api_key = "ecc4d531588bc6a23764b0af2d012ff0";
+   // $scope.api_key = "ecc4d531588bc6a23764b0af2d012ff0";
 
-    $http.get("http://gateway.marvel.com/v1/public/comics?apikey=" + $scope.api_key)
+    $http.get("http://gateway.marvel.com:80/v1/public/characters?apikey=ecc4d531588bc6a23764b0af2d012ff0")
       .success(function (data) {
-          $scope.Character = data.name;
+          $scope.data = data.name;
       });
 
     //$scope.Line = '-Line';
